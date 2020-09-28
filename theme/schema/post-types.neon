@@ -1,0 +1,26 @@
+defaults:
+	public: true
+	has_archive: false
+	exclude_from_search: true
+	publicly_queryable: true
+	show_ui: true
+	show_in_menu: true
+
+	supports:
+		- title
+		- editor
+		- thumbnail
+		- revisions
+		- page-attributes
+
+remove:
+	- comments
+
+register:
+	thing:
+		isExample: true
+		public: true
+		label: Things
+		faicon: crow
+		rewrite:
+			slug: thing

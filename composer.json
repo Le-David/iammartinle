@@ -1,0 +1,44 @@
+{
+    "name": "mangoweb/mangopress",
+    "description": "WordPress + Nette",
+    "type": "project",
+    "require": {
+        "mangoweb/mangopress-sql-panel": "dev-master",
+        "mangoweb/mangopress-templating": "dev-master",
+        "roots/wp-password-bcrypt": "^1.0",
+        "sentry/sentry": "^1.7",
+        "nette/application": "^2.4",
+        "nette/bootstrap": "^2.4",
+        "nette/caching": "^2.5",
+        "nette/component-model": "^2.4",
+        "nette/database": "^2.4",
+        "nette/finder": "^2.4",
+        "nette/forms": "^2.4",
+        "nette/http": "^2.4",
+        "nette/mail": "^2.4",
+        "nette/neon": "^2.4",
+        "nette/reflection": "^2.4",
+        "nette/robot-loader": "^3.1",
+        "nette/safe-stream": "^2.3",
+        "nette/security": "^2.4",
+        "nette/tokenizer": "^2.3",
+        "nette/utils": "^2.5",
+        "latte/latte": "^2.4",
+        "tracy/tracy": "^2.5",
+        "nette/di": "^2.4",
+        "wp-cli/wp-cli-bundle": "^2.2"
+    },
+    "config": {
+      "preferred-install": "dist",
+      "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+      "post-update-cmd": ["echo Warning: Deleting all .git dirs under vendor ", "rm -rf vendor/**/**/.git"],
+      "post-install-cmd": ["echo Warning: Deleting all .git dirs under vendor", "rm -rf vendor/**/**/.git"]
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    }
+}

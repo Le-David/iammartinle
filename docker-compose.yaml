@@ -1,0 +1,58 @@
+version: '2.4'
+
+services:
+  mysql:
+    image: mysql:5.6
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    depends_on:
+      - mysql
+
+  mailhog:
+    image: mailhog/mailhog
+    command: ["-smtp-bind-addr", "0.0.0.0:25"]
+    user: root
+    expose:
+      - 25
+      - 8025
+    healthcheck:
+      test: echo | telnet 127.0.0.1 25
+
+  redis:
+    image: redis:4.0.8-alpine
+
+  php:
+    image: 831119889470.dkr.ecr.eu-central-1.amazonaws.com/mangoweb/php:7.2-wkhtmltopdf
+    restart: on-failure
+    working_dir: /src
+    user: ${DOCKER_USER}:${DOCKER_USER}
+    environment:
+      SESSION_STORE_URI: "tcp://redis?prefix=ambi-dev."
+      NETTE_DEBUG: "TRUE"
+    volumes:
+      - .:/src:cached
+      - ./deploy/php.ini:/usr/local/etc/php/php.ini:delegated,ro
+    depends_on:
+      - mysql
+      - redis
+      - mailhog
+
+  nginx:
+    image: 831119889470.dkr.ecr.eu-central-1.amazonaws.com/mangoweb/nginx:1.16
+    restart: on-failure
+    volumes:
+      - .:/src:cached
+      - ./deploy/nginx.conf:/etc/nginx/nginx.conf:delegated,ro
+      - ./docker/fpm-upstream.conf:/etc/nginx/fpm-upstream.conf:delegated,ro
+      - ./docker/location-php.conf:/etc/nginx/location-php.conf:delegated,ro
+    depends_on:
+      - php
+
+volumes:
+  mysql-data:

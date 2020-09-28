@@ -1,0 +1,55 @@
+{extends archive.latte}
+
+{block page}
+	{include parent}
+
+	<hr>
+
+	<div id="example-component-placeholder">
+		<h3>Example of front-end component. Viz <code>scripts/components/Example.ts</code>:</h3>
+		<button class="example-child">Click me</button>
+		<div class="example-icons">
+			<div class="example-icon">
+				{component shape name => plus}
+			</div>
+			<div class="example-icon">
+				{component shape name => plus}
+			</div>
+		</div>
+		<div class="example-icons">
+			<div class="example-icon">
+				{component shape name => go}
+			</div>
+			<div class="example-icon">
+				{component shape name => go}
+			</div>
+		</div>
+	</div>
+	{initComponent Example, [
+		place => '#example-component-placeholder',
+		props => [
+			name => 'Krasavec',
+			numberOfTheDay => 42,
+		],
+	]}
+
+	<hr>
+
+	<h3>Image:</h3>
+	<img src="{$assetsPath}/images/mangoweb.png" width="192" height="192" alt="manGoweb logo">
+
+	<hr>
+
+	<h3 id="buttons">Buttons:</h3>
+	<button class="button" type="button">&lt;button&gt;</button>
+	<br>
+	<a class="button" href="#buttons">&lt;a&gt;</a>
+
+	<hr>
+
+	<h3 id="buttons">Example Form:</h3>
+	<p>From <code>theme/forms/contact.php</code>.</p>
+
+	{$Forms[contact]}
+
+{/block}

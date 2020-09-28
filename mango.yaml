@@ -1,0 +1,41 @@
+version: ">=3.5.0"
+src_folder: theme
+dist_folder: public/assets
+styles:
+  - theme/styles/index.sass
+  - theme/styles/print.sass
+  - theme/styles/styleguide.sass
+  - theme/styles/wp-admin.sass
+  - theme/styles/wp-editor.sass
+  - theme/styles/gutenberg.sass
+scripts:
+  - theme/scripts/index.ts
+  - theme/scripts/styleguide.ts
+  - theme/scripts/wp-admin.ts
+  - theme/scripts/gutenberg.ts
+images:
+  - "theme/images/**/*.{jpg,png,gif}"
+sprites:
+  -
+    path: theme/images/sprites/*.svg
+    name: false
+static:
+  - "theme/libs/**"
+  - "theme/images/**/*.svg"
+  - "theme/fonts/**"
+  - node_modules/lt-ie-9/lt-ie-9.min.js
+buildstamp:
+  - public/assets/styles/index.css
+  - public/assets/styles/styleguide.css
+  - public/assets/styles/wp-admin.css
+  - public/assets/styles/wp-editor.css
+  - public/assets/scripts/index.js
+  - public/assets/scripts/styleguide.js
+  - public/assets/scripts/wp-admin.js
+  - public/assets/sprites/shapes.svg
+watch:
+  - "theme/**/*.{latte,php,neon}"
+hooks:
+  init: npm install
+snippet: yes please
+sassNodeModulesAlias: "~"

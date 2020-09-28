@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+  nginx:
+    ports:
+      - 127.0.0.1:8000:80
+
+  adminer:
+    ports:
+      - 127.0.0.1:8001:8080
+
+  mailhog:
+    ports:
+      - 127.0.0.1:8002:8025
