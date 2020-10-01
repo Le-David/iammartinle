@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$DIR")"
+
+source ${DIR}/_tty.sh
+
+if [ $(docker-compose ps php-xdebug | grep Up | wc -l) -gt 0 ]; then
+	docker_compose_exec \
+		--workdir=/src${PWD:${#PROJECT_ROOT}} \
+		php-xdebug php "$@"
+else
+	docker_compose_run \
+		--entrypoint=/usr/local/bin/php \
+		--workdir=/src${PWD:${#PROJECT_ROOT}} \
+		php-xdebug "$@"
+fi

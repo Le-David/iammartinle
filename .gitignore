@@ -16,7 +16,3 @@
 /public/wp-content/uploads
 /public/wp-content/cache
 /yarn.lock
-
-# You might want to delete these rules for project usage:
-/vendor
-/public

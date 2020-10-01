@@ -1,0 +1,21 @@
+{
+    "name": "mangoweb/mangopress-sql-panel",
+    "description": "Tracy panel showing committed SQL queries.",
+    "homepage": "https://github.com/mangoweb/MangoPressSqlPanel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ViliamKopecky",
+            "email": "vk@viliamkopecky.cz"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "nette/utils": ">=2.4",
+        "tracy/tracy": ">=2.4"
+    },
+    "autoload": {
+        "classmap": ["src"]
+    },
+    "minimum-stability": "stable"
+}

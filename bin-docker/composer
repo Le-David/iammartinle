@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$DIR")"
+
+source ${DIR}/_tty.sh
+
+if  [[ $@ == req* || $@ == ins* || $@ == up* || $@ == rem* ]] && [[ $@ != *ignore-platform-reqs* ]];
+then
+	echo -e "\e[33m" >&2
+	echo "You are using composer in docker" >&2
+	echo "platform-reqs may not be fulfilled, use \`--ignore-platform-reqs\`" >&2
+	echo "ON YOUR OWN RISK" >&2
+	echo -e "\e[0m\n" >&2
+fi
+
+docker_run \
+	-e "COMPOSER_HOME=/var/composer-home" \
+	-v composer-home:/var/composer-home \
+	-v "$PROJECT_ROOT":"$PROJECT_ROOT" \
+	-w "$(pwd)" \
+	831119889470.dkr.ecr.eu-central-1.amazonaws.com/mangoweb/composer:1.7 "$@"

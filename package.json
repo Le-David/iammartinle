@@ -22,7 +22,7 @@
 		"lt-ie-9": "^0.1.2",
 		"nette-forms": "^3.0.3",
 		"normalize-scss": "^7.0.1",
-		"npm-check": "^5.9.0",
+		"npm-check": "^5.9.2",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0"
 	},
