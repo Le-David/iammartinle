@@ -17,18 +17,23 @@
 	{php do_action(get_header)}
 </head>
 <body {php body_class()}>
+
+	{component header}
+
 	{$mangoSnippet}
 	{initComponent ShapesFallback}
 
 	{block body}
-	<div class="page">
-		{block alerts}
-			<div class="alerts" n:if="!empty($flashes)">
-				<div n:foreach="$flashes as $flash" class="alert type-{$flash->type}">{$flash->message}</div>
+		{block fullPage}
+			<div class="page">
+				{block alerts}
+					<div class="alerts" n:if="!empty($flashes)">
+						<div n:foreach="$flashes as $flash" class="alert type-{$flash->type}">{$flash->message}</div>
+					</div>
+				{/block}
+				{block page}{/block}
 			</div>
 		{/block}
-		{block page}{/block}
-	</div>
 	{/block}
 
 	{php wp_footer()}
