@@ -1,0 +1,10 @@
+{default $postIn = []}
+
+{var $link = get_permalink($postIn)}
+
+<article class="articles-in">
+    <a href="{$link}" class="articles-in-link">
+        <h2 class="articles-in-title">{apply_filters('the_content', $postIn->post_title)}</h2>
+        <div class="articles-in-date">{$postIn->post_date|date:'d. m. Y'}</div>
+    </a>
+</article>      

@@ -1,0 +1,25 @@
+.articles
+    max-width: 780px
+    margin: 50px auto 0
+
+    &-in
+        margin-bottom: 50px
+        text-align: center
+
+        &-link
+            color: $c-black
+
+            &:hover
+                color: $c-black
+                text-decoration: none
+
+                .articles
+                    &-in
+                        &-title, &-date
+                            transform: scale(1.02)
+
+        &-title
+            transition: transform $transition ease
+
+        &-date
+            transition: transform $transition ease

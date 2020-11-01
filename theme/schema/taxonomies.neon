@@ -9,3 +9,8 @@ register:
 		label: Thing category
 		post_types:
 			- thing
+
+	articles_category:
+		label: Articles category
+		post_types:
+			- articles

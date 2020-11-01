@@ -5,6 +5,7 @@ defaults:
 	publicly_queryable: true
 	show_ui: true
 	show_in_menu: true
+	show_in_rest: true # enable gutenberg blocks
 
 	supports:
 		- title
@@ -19,8 +20,16 @@ remove:
 register:
 	thing:
 		isExample: true
-		public: true
+		public: false
 		label: Things
 		faicon: crow
 		rewrite:
 			slug: thing
+			
+	articles:
+		public: true
+		label: Articles
+		has_archive: true
+		faicon: admin-post
+		rewrite:
+			slug: articles
