@@ -1,7 +1,10 @@
 <header class="header">
-	<div class="header-logo">
-{*		<img src="" alt="" class="header-image">*}
-		<div class="header-image">I am Martin Le</div>
+	<div class="site">
+		<div class="header-logo">
+		<a href="{home_url()}" class="header-logo-link">
+			<img src="{$assetsPath}/images/logo-black-transparent-500x76.png" alt="I am Martin Le" class="header-image">
+		</a>
+		</div>
+		{component menu}
 	</div>
-	{component navigation}
 </header>

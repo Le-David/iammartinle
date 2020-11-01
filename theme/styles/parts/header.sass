@@ -1,8 +1,14 @@
 .header
-
+	
 	&-logo
+		max-width: 500px
+		margin: 20px auto
+
+		&-link:hover
+
+			.header
+				&-image
+					transform: scale(1.01)
 
 	&-image
-		font-size: 70px
-		font-weight: 700
-		text-align: center
+		transition: transform $transition ease

@@ -1,8 +1,15 @@
-<nav class="navigation">
-	<ul class="navigation-list">
+<nav class="menu">
+	{* <ul class="navigation-list">
 		<li class="navigation-item"><a href="#" class="navigation-link">About</a></li>
 		<li class="navigation-item"><a href="#" class="navigation-link">Articles</a></li>
 		<li class="navigation-item"><a href="#" class="navigation-link">Infographics</a></li>
 		<li class="navigation-item"><a href="#" class="navigation-link">Musings</a></li>
-	</ul>
+	</ul> *}
+
+	{wp_nav_menu( array(
+		'theme_location' => 'main_nav',
+		'menu_id' => 'menu-list',
+		'menu_class' => 'menu-list',
+		'' => '',
+	))}
 </nav>
