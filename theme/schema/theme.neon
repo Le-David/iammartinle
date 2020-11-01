@@ -33,7 +33,6 @@ hide:
 
 	thumbnail:
 		post_types:
-			- post
 
 		templates:
 			- front-page
