@@ -1,11 +1,10 @@
 {extends @layout.latte}
 
 {var $query = getArticles()}
-{dump $query}
 
 {block fullPage}
 
-    <main class="articles">
+    <main class="post post-type-articles post-type-articles-detail">
         {foreach $query->posts as $postIn}
             {include components/articles-in.latte, 
                 postIn => $postIn,

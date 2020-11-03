@@ -1,0 +1,19 @@
+{extends @layout.latte}
+
+{var $parsed_blocks = parse_blocks($post->post_content) }
+
+{block fullPage}
+
+    <main class="post post-type-articles post-type-articles-list">
+        <article class="article">
+            <h1 class="article-title">{$post->post_title}</h1>
+            <time class="article-date" datetime="{($post->post_date)|date:'Y-m-d'}">{($post->post_date)|date:'F j, Y'}</time>
+            
+            {foreach $parsed_blocks as $block}
+                {render_block($block)|noescape}
+            {/foreach}
+
+        </article>
+    </main>
+
+{/block}
