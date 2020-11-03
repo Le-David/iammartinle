@@ -29,7 +29,6 @@ support:
 hide:
 	editor:
 		templates:
-			- front-page
 
 	thumbnail:
 		post_types:
