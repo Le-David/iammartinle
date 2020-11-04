@@ -1,0 +1,15 @@
+{extends @layout.latte}
+
+{var $query = getMusings()}
+
+{block fullPage}
+    {dump $query}
+    <article class="post post-type-musings post-type-musings-list">
+        {foreach $query->posts as $postIn}
+            {include components/musings-in.latte, 
+                postIn => $postIn,
+            }
+        {/foreach}
+    </article>
+
+{/block}

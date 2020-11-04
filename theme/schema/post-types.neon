@@ -33,3 +33,11 @@ register:
 		faicon: admin-post
 		rewrite:
 			slug: articles
+
+	musings:
+		public: true
+		label: Musings
+		has_archive: true
+		faicon: admin-post
+		rewrite:
+			slug: musings

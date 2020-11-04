@@ -16,18 +16,32 @@ function special_nav_class ($classes, $item) {
     return $classes;
 }
 
-function getArticles(){
+	function getArticles(){
 
-    $totalPages = get_option('posts_per_page'); // get number of posts per page from settings in admin (settings->reading->Blog pages show at most)
+		$totalPages = get_option('posts_per_page'); // get number of posts per page from settings in admin (settings->reading->Blog pages show at most)
 
-	$query = new WP_Query([
-		'post_type' =>'articles',
-		'post_status' =>'publish',
-		'order' => 'DESC',
-		'orderby' => 'date',
-		'posts_per_page' => $totalPages,
-	]);
+		$query = new WP_Query([
+			'post_type' =>'articles',
+			'post_status' =>'publish',
+			'order' => 'DESC',
+			'orderby' => 'date',
+			'posts_per_page' => $totalPages,
+		]);
 
-    return $query;
-	
-}
+		return $query;
+		
+	}
+
+	function getMusings(){
+
+		$query = new WP_Query([
+			'post_type' =>'musings',
+			'post_status' =>'publish',
+			'order' => 'DESC',
+			'orderby' => 'date',
+			'posts_per_page' => -1,
+		]);
+
+		return $query;
+		
+	}
