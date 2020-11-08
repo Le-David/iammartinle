@@ -1,0 +1,32 @@
+.footer
+
+    &-in
+        display: flex
+        justify-content: space-between
+        align-items: center
+    
+    &-socials
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 0 -5px
+
+    &-social
+        padding: 10px
+        margin: 0 5px
+
+        &-link:hover &
+
+            &-icon
+                opacity: 1
+
+        &-icon
+            color: $c-black
+            opacity: .5
+            transition: opacity $transition ease
+
+    &-copyright
+
+        &-text
+            font-size: $font-size-tiny
+            margin: 0

@@ -1,0 +1,26 @@
+{var $social_channels = wp_get_nav_menu_items('Social channels')}
+
+<footer class="footer">
+    <div class="site">
+        <div class="footer-in">
+            <div class="footer-socials">
+                {foreach $social_channels as $item}
+                    {if $item->post_title == 'email'}
+                        {var $email = ($item->url|replace:'https://':'')}
+                    {/if}
+                    <div class="footer-social">
+                        <a class="footer-social-link" href='{$item->post_title == "email" ? "mailto:$email" : $item->url}' target='{$item->post_title != "email" ? "_blank"}'>
+                            {component shape, 
+                                name => $item->post_title,
+                                class => 'footer-social-icon',
+                            }
+                        </a>
+                    </div>
+                {/foreach}
+            </div>
+            <div class="footer-copyright">
+                <p class="footer-copyright-text">Copyright 2020</p>
+            </div>
+        </div>
+    </div>
+</footer>
