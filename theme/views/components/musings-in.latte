@@ -2,9 +2,7 @@
 
 {var $parsed_blocks = parse_blocks($postIn->post_content)}
 
-<article class="musings-in">
+{foreach $parsed_blocks as $block}
     <time class="musings-in-date" datetime="{($post->post_date)|date:'Y-m-d'}">{($post->post_date)|date:'F j, Y'}</time>
-    {foreach $parsed_blocks as $block}
-        {render_block($block)|noescape}
-    {/foreach}
-</article>
+    {render_block($block)|noescape}
+{/foreach}

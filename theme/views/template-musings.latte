@@ -3,12 +3,14 @@
 {var $query = getMusings()}
 
 {block fullPage}
-    {dump $query}
     <article class="post post-type-musings post-type-musings-list">
         {foreach $query->posts as $postIn}
-            {include components/musings-in.latte, 
-                postIn => $postIn,
-            }
+            <article class="musings-in">
+                <h1 class="musings-in-title">{$postIn->post_title}</h1>
+                {include components/musings-in.latte, 
+                    postIn => $postIn,
+                }
+            </article>
         {/foreach}
     </article>
 
