@@ -12,4 +12,4 @@ register:
 		post_types:
 			- articles
 		rewrite:
-			slug: categories
+			slug: articles-categories

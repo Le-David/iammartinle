@@ -1,5 +1,35 @@
 .articles
 
+    &-aside
+        height: 100%
+        width: 40%
+        padding: 0 20px
+    
+    &-categories
+        +sticky(20px 0 0 0)
+        list-style-type: none
+        text-align: right
+        padding: 0
+
+    &-category
+        display: inline-block
+        margin-left: 5px
+        transition: transform $transition ease
+
+        &-link
+            color: $c-black
+
+            &:hover
+                color: black
+                text-decoration: none
+
+        &:not(:first-of-type):hover
+            transform: translateY(-3px)
+
+    &-list
+        width: 60%
+        padding: 0 20px
+
     &-in
         margin-bottom: 50px
         text-align: center
@@ -14,11 +44,47 @@
                 .articles
                     &-in
                         &-title, &-date
-                            transform: scale(1.02)
+                            transform: translateY(-3px)
 
         &-title
             transition: transform $transition ease
 
         &-date
-            font-size: 16px
+            font-size: $font-size-small
             transition: transform $transition ease
+            color: #bcbcbc
+
+        &-taxonomies
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-wrap: wrap
+            list-style-type: none
+            padding: 0
+            margin-top: 10px
+
+        &-tax
+            margin: 0 5px
+            transition: transform $transition ease
+
+            &-icon
+                margin: 0 5px
+
+                &-in
+                    width: 18px !important
+                    height: 18px !important
+            
+            &-link
+                color: $c-black
+                
+                &:hover
+                    color: $c-black
+                    text-decoration: none
+
+            &-title
+                font-size: $font-size-tiny
+                font-weight: $fw-bold
+                margin: 0
+
+            &:not(:first-of-type):hover
+                transform: translateY(-3px)

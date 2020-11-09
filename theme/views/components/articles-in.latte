@@ -1,10 +1,19 @@
 {default $postIn = []}
 
 {var $link = get_permalink($postIn)}
+{var $taxonomies = get_the_terms($postIn->ID, 'article_categories')}
 
 <article class="articles-in">
     <a href="{$link}" class="articles-in-link">
         <h2 class="articles-in-title">{apply_filters('the_content', $postIn->post_title)}</h2>
         <time class="articles-in-date" datetime="{($post->post_date)|date:'Y-m-d'}">{($post->post_date)|date:'F j, Y'}</time>
     </a>
-</article>      
+    <ul class="articles-in-taxonomies" n:if="$taxonomies">
+        <li class="articles-in-tax-icon">{component shape, name => 'tag', class => 'articles-in-tax-icon-in'}</li>
+        <li class="articles-in-tax" n:foreach="$taxonomies as $tax">
+            <a href="/articles-categories/{$tax->slug}" class="articles-in-tax-link">
+                <h5 class="articles-in-tax-title">{$tax->name}</h5>
+            </a>
+        </li>
+    </ul>
+</article>
