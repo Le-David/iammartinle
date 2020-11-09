@@ -32,6 +32,20 @@ function special_nav_class ($classes, $item) {
 		
 	}
 
+	function getTaxonomiesArticles(){
+
+		$terms = get_terms( 
+			array(
+				'taxonomy' => 'article_categories',
+				'orderby' => 'name',
+				'order' => 'ASC',
+				'hide_empty' => false,
+			)
+		);
+
+		return $terms;
+	}
+
 	function getMusings(){
 
 		$query = new WP_Query([
