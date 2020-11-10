@@ -1,4 +1,33 @@
 {extends @layout.latte}
 
+{var $category_posts = getCategoryPosts($Post->name)}
+
 {block fullPage}
+    <main class="post post-type-articles post-type-articles-category" id="post-type-articles-category">
+        <aside class="articles-aside" id="articles-aside">
+            <ul class="articles-categories">
+                <li class="articles-category"><span class="articles-in-tax-icon">{component shape, name => 'tag', class => 'articles-in-tax-icon-in'}</span>
+                    <a class="articles-category-link" href="/articles-categories/{$Post->slug}">{$Post->name}</a>
+                </li>
+            </ul>
+        </aside>
+
+        <article class="articles-list" id="articles-list">
+            {foreach $category_posts->posts as $postIn}
+                {include components/articles-in.latte, 
+                    postIn => $postIn,
+                }
+            {/foreach}
+        </article>
+    </main>
+    <script>
+        initComponents.push({
+            name: 'StickySidebar',
+            place: '#post-type-articles-list',
+            props: {
+                sidebarEl: '#articles-aside',
+                mainEl: '#articles-list',
+            }
+        });
+    </script>
 {/block}

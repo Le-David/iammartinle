@@ -46,14 +46,36 @@ function special_nav_class ($classes, $item) {
 		return $terms;
 	}
 
+	function getCategoryPosts($category){
+
+		$posts = new WP_Query([
+			'post_type' => 'articles',
+			'orderby' => 'publish_date',
+			'order' => 'DESC',
+			'tax_query' => [
+				[
+					'taxonomy' => 'article_categories',
+					'field' => 'slug',
+					'terms' => [
+						$category
+					],
+				]
+			],
+		]);
+
+		return $posts;
+	}
+
 	function getMusings(){
+
+		$totalPages = get_option('posts_per_page');
 
 		$query = new WP_Query([
 			'post_type' =>'musings',
 			'post_status' =>'publish',
 			'order' => 'DESC',
 			'orderby' => 'date',
-			'posts_per_page' => -1,
+			'posts_per_page' => $totalPages,
 		]);
 
 		return $query;
