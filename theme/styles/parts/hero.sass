@@ -1,13 +1,22 @@
 .hero
-	display: flex
-	justify-content: center
-	align-items: center
+	margin-bottom: $sectionMargin
 
 	&-picture
-		width: 30%
+		margin-bottom: 20px
 		border-radius: 100%
 		overflow: hidden
 
-	&-content
-		width: 70%
-		padding-left: 100px
+	+media($break768)
+		display: flex
+		justify-content: center
+		align-items: center
+
+		&-content
+			padding-left: 50px
+
+	+media($break992)
+
+		&-content
+			padding-left: 100px
+
+

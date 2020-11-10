@@ -1,0 +1,10 @@
+{var $terms = getTaxonomiesArticles()}
+
+<section class="categories">
+    <ul class="categories-list">
+        <li class="categories-item"><span class="categories-item-icon">{component shape, name => 'tag', class => 'categories-item-icon-in'}</span></li>
+        <li class="categories-item" n:foreach="$terms as $tax">
+            <a class="categories-item-link" href="articles-categories/{$tax->slug}">{$tax->name}</a>
+        </li>
+    </ul>
+</section>
