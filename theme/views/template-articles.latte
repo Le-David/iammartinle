@@ -6,14 +6,8 @@
 {block fullPage}
 
     <main class="post post-type-articles post-type-articles-list" id="post-type-articles-list">
-        <aside class="articles-aside" id="articles-aside">
-            <ul class="articles-categories">
-                <li class="articles-category"><span class="articles-in-tax-icon">{component shape, name => 'tag', class => 'articles-in-tax-icon-in'}</span></li>
-                <li class="articles-category" n:foreach="$terms as $tax">
-                    <a class="articles-category-link" href="/articles-categories/{$tax->slug}">{$tax->name}</a>
-                </li>
-            </ul>
-        </aside>
+    
+        {component sidebar, terms => $terms}
 
         <article class="articles-list" id="articles-list">
             {foreach $query->posts as $postIn}
@@ -28,7 +22,7 @@
             name: 'StickySidebar',
             place: '#post-type-articles-list',
             props: {
-                sidebarEl: '#articles-aside',
+                sidebarEl: '#sidebar',
                 mainEl: '#articles-list',
             }
         });

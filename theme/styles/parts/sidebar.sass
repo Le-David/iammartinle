@@ -1,0 +1,39 @@
+.sidebar
+    +absolute
+    visibility: hidden
+    opacity: 1
+    
+    +media($break1400)
+        visibility: visible
+        opacity: 1
+        width: 300px
+        height: 100%
+        right: 100%
+        
+        &-categories
+            +sticky(20px 0 0 0)
+            list-style-type: none
+            text-align: right
+            padding: 0
+
+        &-category
+            display: inline-block
+            margin-left: 5px
+            transition: transform $transition ease
+
+            &-link
+                color: $c-black
+
+                &:hover
+                    color: black
+                    text-decoration: none
+
+            &:not(:first-of-type):hover
+                transform: translateY(-3px)
+
+            &-icon
+                margin: 0 5px
+
+                &-in
+                    width: 18px !important
+                    height: 18px !important

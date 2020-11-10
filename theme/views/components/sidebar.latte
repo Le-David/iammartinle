@@ -1,0 +1,12 @@
+{default $terms = []}
+
+{if $terms}
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-categories">
+            <li class="sidebar-category"><span class="sidebar-category-icon">{component shape, name => 'tag', class => 'sidebar-category-icon-in'}</span></li>
+            <li class="sidebar-category" n:foreach="$terms as $tax">
+                <a class="sidebar-category-link" href="/articles-categories/{$tax->slug}">{$tax->name}</a>
+            </li>
+        </ul>
+    </aside>
+{/if}
