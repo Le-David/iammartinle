@@ -1,11 +1,22 @@
 {extends @layout.latte}
 
 {var $parsed_blocks = parse_blocks($post->post_content) }
+{var $terms = get_the_terms($post->ID, 'article_categories')}
 
 {block fullPage}
 
-    <main class="post post-type-articles post-type-articles-list">
-        <article class="article">
+    <main class="post post-type-articles post-type-articles-detail" id="post-type-articles-detail">
+        <aside class="articles-aside" id="articles-aside">
+            <ul class="articles-categories">
+                {if $terms}
+                    <li class="articles-category"><span class="articles-in-tax-icon">{component shape, name => 'tag', class => 'articles-in-tax-icon-in'}</span></li>
+                    <li class="articles-category" n:foreach="$terms as $tax">
+                        <a class="articles-category-link" href="/articles-categories/{$tax->slug}">{$tax->name}</a>
+                    </li>
+                {/if}
+            </ul>
+        </aside>
+        <article class="article" id="article">
             <h1 class="article-title">{$post->post_title}</h1>
             <time class="article-date" datetime="{($post->post_date)|date:'Y-m-d'}">{($post->post_date)|date:'F j, Y'}</time>
             
@@ -15,5 +26,15 @@
 
         </article>
     </main>
+    <script>
+        initComponents.push({
+            name: 'StickySidebar',
+            place: '#post-type-articles-detail',
+            props: {
+                sidebarEl: '#articles-aside',
+                mainEl: '#article',
+            }
+        });
+    </script>
 
 {/block}
