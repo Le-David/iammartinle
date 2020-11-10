@@ -1,5 +1,7 @@
 {extends archive.latte}
 
+{var $terms = getTaxonomiesArticles()}
+
 {block page}
 	<section class="hero">
 		<div class="hero-picture">
@@ -14,5 +16,12 @@
 				error est expedita iure magnam mollitia non nulla odit omnis pariatur quae quas similique temporibus,
 				totam veritatis voluptatum?</p>
 		</div>
+	</section>
+	<section class="categories">
+		<ul class="categories-list">
+			<li class="categories-item" n:foreach="$terms as $tax">
+				<a class="categories-item-link" href="articles-categories/{$tax->slug}">{$tax->name}</a>
+			</li>
+		</ul>
 	</section>
 {/block}
