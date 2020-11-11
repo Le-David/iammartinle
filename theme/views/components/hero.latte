@@ -1,14 +1,11 @@
+{default $post = []}
+
 <section class="hero">
     <div class="hero-picture">
-        <img class="hero-image" src="{$assetsPath}/images/iammartinle.jpg" alt="iammartinle">
+        {the_post_thumbnail('sizes', ['class' => 'hero-image'])}
     </div>
     <div class="hero-content">
-        <h1 class="hero-title">Hi, I'm Martin Le</h1>
-        <p class="hero-parahraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid debitis ducimus,
-            error est expedita iure magnam mollitia non nulla odit omnis pariatur quae quas similique temporibus,
-            totam veritatis voluptatum?</p>
-        <p class="hero-parahraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid debitis ducimus,
-            error est expedita iure magnam mollitia non nulla odit omnis pariatur quae quas similique temporibus,
-            totam veritatis voluptatum?</p>
+        <h1 class="hero-title">{apply_filters(the_title, $post->post_title)}</h1>
+        {apply_filters('the_content', $post->post_content)|noescape}
     </div>
 </section>

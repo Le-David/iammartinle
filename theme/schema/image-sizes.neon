@@ -2,3 +2,4 @@ register:
 	s: 320
 	m: 320x480
 	l: 320x480c
+	heroImage: 710x710
