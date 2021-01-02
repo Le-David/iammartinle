@@ -6,7 +6,7 @@
 <article class="articles-in">
     <a href="{$link}" class="articles-in-link">
         <h1 class="articles-in-title">{apply_filters('the_title', $postIn->post_title)}</h1>
-        <time class="articles-in-date" datetime="{($post->post_date)|date:'Y-m-d'}">{($post->post_date)|date:'F j, Y'}</time>
+        <time class="articles-in-date" datetime="{($postIn->post_date)|date:'Y-m-d'}">{($postIn->post_date)|date:'F j, Y'}</time>
     </a>
     <ul class="articles-in-taxonomies" n:if="$taxonomies">
         <li class="articles-in-tax-icon">{component shape, name => 'tag', class => 'articles-in-tax-icon-in'}</li>
